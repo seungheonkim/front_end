@@ -42,3 +42,6 @@ console.log(!isFemale);//false
 console.log(!!isStudent)//true
 console.log(!!!isFemale)//false
 
+let str = 'hello';
+str = str.slice(1, 4);
+console.log(str);
