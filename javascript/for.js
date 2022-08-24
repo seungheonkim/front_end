@@ -22,3 +22,18 @@ function multiplier() {
 }
 
 console.log(multiplier())
+
+
+function makeLastSeenMsg(name, period) {
+    if (period < 60) {
+        return `${name}: ${period}분 전에 접속함`
+    } else if (60 <= period && period < (24 * 60)) {
+        period = Math.floor(period / 60);
+        return `${name}: ${period}시간 전에 접속함`
+    } else {
+        period = Math.floor(period / (24 * 60));
+        return `${name}: ${period}일 전에 접속함`
+    }
+}
+
+console.log(makeLastSeenMsg('jack', 5760))
