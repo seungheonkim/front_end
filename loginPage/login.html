@@ -2,18 +2,13 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>Title</title>
+        <title>loginPage</title>
     </head>
     <body>
-        <div>
-            ID : <input type="text" placeholder="type here!">
-        </div>
-        <div>
-            PW : <input type="password">
-        </div>
-        <div>
-            <input type="checkbox"> 다음 로그인시 ID를 기억합니다
-        </div>
+        <input id="id-input" class="input focus" type="text" placeholder="ID">
+        <input id="password-input" class="input focus" type="password" placeholder="password">
+        <button id="login-button">로그인</button>
+        <input id="keep-checkbox" type="checkbox"> Keep Login
         <div>
             <input type="radio" name="option1">옵션 A
             <input type="radio" name="option1">옵션 B
@@ -21,8 +16,7 @@
 
         <textarea>줄바꿈이 가능합니다</textarea>
 
-        <div>
-            <button>로그인</button>
-        </div>
     </body>
+
+    <link rel="stylesheet" href="/css/style.css">
 </html>
