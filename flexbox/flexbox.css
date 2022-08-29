@@ -2,7 +2,6 @@ main {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: flex-end;
     border: 1px dotted red;
 }
 
@@ -13,4 +12,16 @@ div {
 * {
     margin: 10px;
     padding: 10px;
+}
+
+#box1 {
+    flex-grow: 1;
+}
+
+#box2 {
+    flex-grow: 1;
+}
+
+#box3 {
+    flex-grow: 1;
 }
