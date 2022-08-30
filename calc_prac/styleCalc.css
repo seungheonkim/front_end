@@ -19,10 +19,13 @@
 }
 
 .calculator {
+    display: flex;
+    flex-direction: column;
     background-color: gray;
     height: 300px;
     width: 250px;
     border-radius: 10px;
+    box-shadow: 10px 5px 5px black;
 }
 
 .display {
@@ -31,9 +34,10 @@
     border-top-right-radius: 10px;
     height: 25%;
     font-size: 40px;
-    text-align: right;
-    vertical-align: center;
     padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: end;
 }
 
 .result {
@@ -41,7 +45,8 @@
 }
 
 .button__row {
-    height: calc(75% / 5);
+    display: flex;
+    flex: 1 0 auto;
 }
 
 .AC, .plus\/minus, .percent {
@@ -50,13 +55,17 @@
 }
 
 .button__row > button {
-    width: calc(250px / 4);
+    flex: 1 0 25%;
     height: 45px;
-    float: left;
-    border: 1px solid black;
-    outline: none;
+    border: 1px solid gray;
     cursor: pointer;
-    font-size: 20px;
+    font-size: 15px;
+    box-shadow: 3px 3px 3px gray;
+}
+
+.button__row::after {
+    content: '';
+    clear: both;
 }
 
 .button__row > .operator {
@@ -64,17 +73,45 @@
     color: white;
 }
 
+
 .button__row > .number, .decimal, .zero {
     color: white;
     background-color: rgb(122, 122, 122);
 }
 
 .button__row > .zero {
-    width: 125px;
+    flex: 1 0 50%;
     border-bottom-left-radius: 10px;
 }
 
 .button__row > .equal {
     border-bottom-right-radius: 10px;
+}
+
+.button__row > .number:active {
+    color: black;
+    box-shadow: inset 3px 3px 3px 3px #4f4f4f;
+    transition-duration: 0.3s;
+}
+
+.button__row > .operator:active {
+    color: black;
+    box-shadow: inset 3px 3px 3px 3px orangered;
+    transition-duration: 0.3s;
+}
+
+.AC:active {
+    color: red;
+    box-shadow: inset 3px 3px 3px 3px #4f4f4f;
+}
+
+.plus\/minus:active {
+    color: black;
+    box-shadow: inset 3px 3px 3px 3px #4f4f4f;
+}
+
+.percent:active {
+    color: black;
+    box-shadow: inset 3px 3px 3px 3px #4f4f4f;
 }
 
