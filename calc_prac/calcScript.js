@@ -16,7 +16,7 @@ function calculate(n1, operator, n2) {
     } else if (operator === '*') {
         result = firstNum * secondNum;
     } else {
-        result = (firstNum / secondNum).toFixed(2);//소수점 2번째 자리까지만 표현하기
+        result = Math.round((firstNum / secondNum) * 100) / 100;//소수점 2번째 자리까지만 표현하기
     }
 
     return String(result);
