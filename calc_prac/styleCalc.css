@@ -38,7 +38,6 @@
     display: flex;
     align-items: center;
     justify-content: end;
-    overflow: auto;
 }
 
 .result {
@@ -89,7 +88,7 @@
     border-bottom-right-radius: 10px;
 }
 
-.button__row > .number:active {
+.button__row > .number:active, .decimal:active {
     color: black;
     box-shadow: inset 3px 3px 3px 3px #4f4f4f;
     transition-duration: 0.3s;

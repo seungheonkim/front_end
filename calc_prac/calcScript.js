@@ -1,82 +1,95 @@
-let calculator = document.querySelector('.calculator')
-let buttons = calculator.querySelector('.calculator__buttons')
+let calculator = document.querySelector('.calculator');
+let button = calculator.querySelector('.calculator__buttons');
 
-let display = document.querySelector('.display')
+let display = document.querySelector('.result');
 
 function calculate(n1, operator, n2) {
     let result = 0;
 
-    let firstNum = Number(n1);
-    let secondNum = Number(n2);
+    let num1 = Number(n1);
+    let num2 = Number(n2);
 
     if (operator === '+') {
-        result = firstNum + secondNum;
+        result = num1 + num2;
     } else if (operator === '-') {
-        result = firstNum - secondNum;
+        result = num1 - num2;
     } else if (operator === '*') {
-        result = firstNum * secondNum;
-    } else {
-        result = Math.round((firstNum / secondNum) * 100) / 100;//소수점 2번째 자리까지만 표현하기
+        result = num1 * num2;
+    } else if (operator === '/') {
+        result = num1 / num2;
     }
-
     return String(result);
 }
 
+//사용될 변수들
+let firstNum, operator, previousNum, previousKey;
 
-//사용할 변수들
-let isOperatorEmpty = true;//연산자 정보 아직 없으면 true, 있으면 false
-let num1 = '';
-let num2 = '';
-let operator = '';
-
-buttons.addEventListener('click', function (event) {
+button.addEventListener('click', function (event) {
     let target = event.target;
     let action = target.classList[0];
     let buttonContent = target.textContent;
 
-
     if (target.matches('button')) {
-        //버튼을 클릭할 경우에만
+        //button 을 클릭했을 경우
         if (action === 'number') {
-            //숫자를 입력하면
-            if (isOperatorEmpty) {//만약 연산자가 주어지지 않았을 경우에는 num1 이므로
-                if (display.textContent === '0') display.textContent = '';//0이라면 빈 문자열로 재할당
-                num1 += buttonContent;//num1 변수에 button.textContent 값을 할당함
-                display.textContent = num1;//display 화면에 num1 값을 띄워줌
+            //숫자를 클릭했을 경우
+            if (display.textContent === '0' || previousKey === 'operator') {
+                //초기상태가 0인 상황이거나 or 두번째 수 입력할때, 즉 직전 입력키가 연산자일 때
+                display.textContent = buttonContent;
             } else {
-                if (display.textContent === '0') display.textContent = '';
-                num2 += buttonContent;
-                display.textContent = num2;
+                display.textContent += buttonContent;
             }
+            previousKey = 'number';
         }
-
         if (action === 'operator') {
-            //연산자 입력하면
-            operator = buttonContent;
-            display.textContent = operator;
-            isOperatorEmpty = false;//연산자를 입력했으므로 false로 변경
-        }
-
-        if (action === 'decimal') {
-            if (isOperatorEmpty) {
-                num1 += buttonContent;
-                display.textContent = num1;
-            } else {
-                num2 += buttonContent;
-                display.textContent = num2;
+            //연산자 클릭했을 경우
+            if (firstNum &&
+                operator &&
+                previousKey !== 'operator' &&
+                previousKey !== 'calculate') {
+                //firstNum이 존재하고, 연산자도 이미 입력이 되었으며, 직전 입력된 버튼이 연산자 버튼과 =버튼이 아니면
+                display.textContent = calculate(firstNum, operator, display.textContent);
             }
+            firstNum = display.textContent;//연산자 입력 전까지 입력된 숫자를 firstNum
+            operator = buttonContent;//해당 연산자를 변수에 할당
+            previousKey = 'operator'
         }
-
-        if (action === 'AC') {//초기화
+        if (action === 'decimal') {
+            // . 입력했을 경우
+            if (!display.textContent.includes('.') && previousKey !== 'operator') {
+                //점이 하나도 없고, 직전 입력된 버튼이 연산자 버튼이 아니라면(처음에 입력된 숫자라면)
+                display.textContent += buttonContent;//점을 추가
+            } else if (previousKey === 'operator') {
+                //점이 하나도 없고, 직전 입력 버튼이 연산자 버튼이라면(두번째 입력된 숫자라면)
+                display.textContent = '0.';
+            }
+            previousKey = 'decimal';
+        }
+        if (action === 'AC') {
+            //초기화 버튼 클릭했을 경우
             display.textContent = '0';
-            operator.textContent = '';
-            isOperatorEmpty = true;
-            num1 = '';
-            num2 = '';
+            firstNum = undefined;
+            operator = undefined;
+            previousNum = undefined;
+            previousKey = 'AC';
         }
-
         if (action === 'calculate') {
-            display.textContent = calculate(num1, operator, num2);
+            //= 클릭했을 경우
+            if (firstNum) {
+                //firstNum 이 존재하는 경우
+                //이때는 이미 연산자를 입력했다는 의미
+                if (previousKey === 'calculate') {
+                    //연속으로 = 을 누르면 해당 마지막 수에 해당 연산자로 계속 동일 계산 반복
+                    display.textContent = calculate(display.textContent, operator, previousNum);
+                } else {
+                    previousNum = display.textContent;//= 누르기 직전 숫자를 previousNum 에 저장
+                    display.textContent = calculate(firstNum, operator, previousNum);
+                    previousKey = 'calculate';
+                }
+            }
+            //firstNum 이 존재하지 않는 경우
+            //연산자 입력 전이라는 의미이기 때문에
+            //= 버튼 눌러도 해당 숫자는 그대로 유지
         }
     }
 })
