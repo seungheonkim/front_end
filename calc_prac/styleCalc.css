@@ -6,7 +6,7 @@
     border: 0px;
     box-sizing: border-box;
     font-family: monospace, cursive;
-    color: #000;
+    color: white;
 }
 
 /*calculator-design*/
@@ -38,6 +38,7 @@
     display: flex;
     align-items: center;
     justify-content: end;
+    overflow: auto;
 }
 
 .result {
@@ -68,7 +69,7 @@
     clear: both;
 }
 
-.button__row > .operator {
+.button__row > .operator, .calculate {
     background-color: rgb(255, 159, 10);
     color: white;
 }
@@ -84,7 +85,7 @@
     border-bottom-left-radius: 10px;
 }
 
-.button__row > .equal {
+.button__row > .calculate {
     border-bottom-right-radius: 10px;
 }
 
@@ -94,7 +95,7 @@
     transition-duration: 0.3s;
 }
 
-.button__row > .operator:active {
+.button__row > .operator:active, .calculate:active {
     color: black;
     box-shadow: inset 3px 3px 3px 3px orangered;
     transition-duration: 0.3s;
