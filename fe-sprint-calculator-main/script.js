@@ -89,10 +89,10 @@ buttons.addEventListener('click', function (event) {
 // ! Advanced Challenge test와 Nightmare test를 위해서는 아래 주석을 해제하세요.
 
 const display = document.querySelector('.calculator__display--for-advanced'); // calculator__display 엘리먼트와, 그 자식 엘리먼트의 정보를 모두 담고 있습니다.
-let firstNum = 0;
+let firstNum = '';
 let operatorForAdvanced = '';
 let previousKey = '';
-let previousNum = 0;
+let previousNum = '';
 let isOperatorEmptyAdvanced = true;
 
 buttons.addEventListener('click', function (event) {
@@ -108,12 +108,11 @@ buttons.addEventListener('click', function (event) {
         if (action === 'number') {
             if (isOperatorEmptyAdvanced) {
                 if (display.textContent === '0') display.textContent = '';
-                display.textContent += buttonContent;
-                previousNum = display.textContent;
+                previousNum += buttonContent;
+                display.textContent = previousNum;
             } else {
-                if (previousNum !== 0) display.textContent = '';
-                display.textContent += buttonContent;
-                firstNum = display.textContent;
+                firstNum += buttonContent;
+                display.textContent = firstNum;
             }
         }
         if (action === 'operator') {
@@ -121,12 +120,19 @@ buttons.addEventListener('click', function (event) {
             isOperatorEmptyAdvanced = false;
         }
         if (action === 'decimal') {
+            if (isOperatorEmptyAdvanced) {
+                previousNum += buttonContent;
+                display.textContent = previousNum;
+            } else {
+                firstNum += buttonContent;
+                display.textContent = firstNum;
+            }
         }
         if (action === 'clear') {
             display.textContent = '0';
-            firstNum = 0;
+            firstNum = '';
             operatorForAdvanced = '';
-            previousNum = 0;
+            previousNum = '';
             isOperatorEmptyAdvanced = true;
         }
         if (action === 'calculate') {
