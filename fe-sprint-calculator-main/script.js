@@ -18,7 +18,7 @@ function calculate(n1, operator, n2) {
     } else if (operator === '*') {
         result = num1 * num2;
     } else {
-        result = ((num1 / num2) * 100) / 100;
+        result = num1 / num2;
     }
     return String(result);
 }
@@ -40,14 +40,9 @@ buttons.addEventListener('click', function (event) {
             // 그리고 버튼의 클레스가 number이면
             // 아래 코드가 작동됩니다.
             if (isOperatorEmpty) {
-                if (firstOperend.textContent === '0') {
-                    firstOperend.textContent = '';
-                }
+                if (firstOperend.textContent === '0') firstOperend.textContent = '';
                 firstOperend.textContent += buttonContent;
             } else {
-                if (secondOperend.textContent === '0') {
-                    secondOperend.textContent = '';
-                }
                 secondOperend.textContent += buttonContent;
             }
         }
@@ -89,11 +84,7 @@ buttons.addEventListener('click', function (event) {
 // ! Advanced Challenge test와 Nightmare test를 위해서는 아래 주석을 해제하세요.
 
 const display = document.querySelector('.calculator__display--for-advanced'); // calculator__display 엘리먼트와, 그 자식 엘리먼트의 정보를 모두 담고 있습니다.
-let firstNum = '';
-let operatorForAdvanced = '';
-let previousKey = '';
-let previousNum = '';
-let isOperatorEmptyAdvanced = true;
+let firstNum, operatorForAdvanced, previousKey, previousNum;
 
 buttons.addEventListener('click', function (event) {
     // 버튼을 눌렀을 때 작동하는 함수입니다.
@@ -106,38 +97,53 @@ buttons.addEventListener('click', function (event) {
     // ! 여기서부터 Advanced Challenge & Nightmare 과제룰 풀어주세요.
     if (target.matches('button')) {
         if (action === 'number') {
-            if (isOperatorEmptyAdvanced) {
-                if (display.textContent === '0') display.textContent = '';
-                previousNum += buttonContent;
-                display.textContent = previousNum;
+            if (display.textContent === '0' || previousKey === 'operator') {
+                display.textContent = buttonContent;
             } else {
-                firstNum += buttonContent;
-                display.textContent = firstNum;
+                display.textContent += buttonContent;
             }
+            previousKey = 'number';
         }
         if (action === 'operator') {
+            if (firstNum && operatorForAdvanced && previousKey !== 'operator' && previousKey !== 'calculate') {
+                //firstNum 이 있고, operator 가 존재할 경우
+                display.textContent = calculate(firstNum, operatorForAdvanced, display.textContent);
+            }
+            firstNum = display.textContent;
             operatorForAdvanced = buttonContent;
-            isOperatorEmptyAdvanced = false;
+            previousKey = 'operator';
         }
         if (action === 'decimal') {
-            if (isOperatorEmptyAdvanced) {
-                previousNum += buttonContent;
-                display.textContent = previousNum;
-            } else {
-                firstNum += buttonContent;
-                display.textContent = firstNum;
+            //. 이 하나이상 나오면 안됨
+            // 점이 하나라도 있는 경우 -> 조건 처리해주자
+            // 현재 화면에 떠있는 숫자에 '.' 이 포함되어 있지 않고, 직전에 누를 키가 operator 가 아닐 때
+            if (!display.textContent.includes('.') && previousKey !== 'operator') {
+                //점이 하나도 없으면 추가
+                display.textContent += buttonContent;
+            } else if (previousKey === 'operator') { // 현재 화면에 . 이 포함되어 있거나, 직전에 누른 키가 operator 일때
+                display.textContent = '0.';
             }
+            previousKey = 'decimal';
         }
         if (action === 'clear') {
             display.textContent = '0';
-            firstNum = '';
-            operatorForAdvanced = '';
-            previousNum = '';
-            isOperatorEmptyAdvanced = true;
+            firstNum = undefined;
+            operatorForAdvanced = undefined;
+            previousNum = undefined;
+            previousKey = 'clear';
         }
         if (action === 'calculate') {
-            display.textContent = calculate(previousNum, operatorForAdvanced, firstNum);
-            previousKey = 'calculate';
+            if (firstNum) {
+                //firstNum이 있다는건 operator가 무조건 쓰였다는 의미
+                //firstNum 이 없다면 operator 안쓰였다는 의미이기 때문에 enter 눌러도 숫자 그대로!
+                if (previousKey === 'calculate') {
+                    display.textContent = calculate(display.textContent, operatorForAdvanced, previousNum);
+                } else {
+                    previousNum = display.textContent;
+                    display.textContent = calculate(firstNum, operatorForAdvanced, previousNum);
+                    previousKey = 'calculate';
+                }
+            }
         }
     }
 
