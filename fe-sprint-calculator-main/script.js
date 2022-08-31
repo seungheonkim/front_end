@@ -137,6 +137,7 @@ buttons.addEventListener('click', function (event) {
         }
         if (action === 'calculate') {
             display.textContent = calculate(previousNum, operatorForAdvanced, firstNum);
+            previousKey = 'calculate';
         }
     }
 
