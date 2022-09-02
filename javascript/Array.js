@@ -55,3 +55,4 @@ console.log(myArr.indexOf(200));
 //특정 값이 포함되어있는지 유무를 true, false 로 판별
 console.log(myArr.includes(200));
 console.log(myArr.includes(1000));
+
