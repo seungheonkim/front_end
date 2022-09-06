@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>toggle</title>
+    </head>
+    <body>
+        <button class="toggle">toggle</button>
+        <div class="box" style="width: 100px; height: 100px; background: red"></div>
+
+        <script>
+            var box = document.querySelector('.box');
+            var toggleBtn = document.querySelector('.toggle');
+
+            var toggle = (function () {
+                var isShow = false;
+
+                return function () {
+                    //isShow 값이 false 라면 안보이게 none 으로 바꿔주고
+                    box.style.display = isShow ? 'block' : 'none';
+                    //isShow 는 true로 바꿔주기
+                    isShow = !isShow;
+                };
+            })();
+
+            toggleBtn.onclick = toggle;
+        </script>
+    </body>
+</html>
