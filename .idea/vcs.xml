@@ -3,5 +3,6 @@
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/fe-sprint-calculator" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/fe-sprint-javascript-koans" vcs="Git" />
   </component>
 </project>
