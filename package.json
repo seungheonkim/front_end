@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/seungheonkim/front_end/issues"
   },
-  "homepage": "https://github.com/seungheonkim/front_end#readme"
+  "homepage": "https://github.com/seungheonkim/front_end#readme",
+  "dependencies": {
+    "lodash.clonedeep": "^4.5.0"
+  }
 }
