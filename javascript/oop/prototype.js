@@ -21,9 +21,10 @@ let person2 = Object.create(person1);
 //prototype example
 const car = {
     wheels: 4,
+
     drive() {
         console.log('drive..');
-    },
+    }
 };
 
 const bmw = {
@@ -40,14 +41,15 @@ const audi = {
 };
 
 const x5 = {
-    color : 'white',
+    color: 'white',
 }
 
-//bmw, benz, audi 의 프로토타입으로 car 을 설정
+
+//bmw, benz, audi 의 부모 역할로서의 프로토타입으로 car 을 설정
 bmw.__proto__ = car;
 benz.__proto__ = car;
 audi.__proto__ = car;
 
-//x5 는 bmw를 상속, 프로토타입으로 설정
+//x5 는 bmw를 상속, 부모 역할로서의 프로토타입으로 bmw를 설정
 x5.__proto__ = bmw;
 
