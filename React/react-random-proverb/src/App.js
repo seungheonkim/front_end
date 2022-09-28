@@ -4,9 +4,10 @@ import './App.css';
 function App() {
     const proverbs = [
         '누워서 떡먹기',
-        '낫 놓고 기억자 모른다',
+        '낫 놓고 기역자도 모른다',
         '친구따라 강남간다',
-        '소 잃고 외양간 고친다'
+        '소 잃고 외양간 고친다',
+        '리액트는 재밌다!!'
     ]
 
     const getRandomIndex = (length) => {
