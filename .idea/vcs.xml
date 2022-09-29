@@ -3,6 +3,7 @@
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/React/fe-sprint-react-twittler-intro" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/React/fe-sprint-react-twittler-spa" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/fe-dom-practice" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/fe-sprint-async-and-promise" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/fe-sprint-beesbeesbees" vcs="Git" />
