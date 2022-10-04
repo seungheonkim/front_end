@@ -1,6 +1,5 @@
-import logo from './logo.svg';
 import React from "react";
-import {BrowserRouter, Route, Routes} from "react-router-dom";
+import {BrowserRouter} from "react-router-dom";
 import './App.css';
 import Questions from "./Pages/Questions";
 

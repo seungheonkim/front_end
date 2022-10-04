@@ -7,7 +7,7 @@ const Question = ({question}) => {
     return (
         <li className="question" id={question.id}>
             <div className="question__profile">
-                <img src={question.avatarUrl}/>
+                <img src={question.avatarUrl} alt={'아바타'}/>
             </div>
             <div className="question__content">
                 <div className="question__userInfo">
