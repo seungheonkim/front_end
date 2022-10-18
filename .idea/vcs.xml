@@ -14,6 +14,7 @@
     <mapping directory="$PROJECT_DIR$/fe-sprint-underbar" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/fe-sprint-validation-check" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/server/fe-sprint-mini-node-server" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/server/fe-sprint-my-agora-states-server" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/server/fe-sprint-statesairline-server" vcs="Git" />
   </component>
 </project>

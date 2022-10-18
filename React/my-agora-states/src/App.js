@@ -1,7 +1,7 @@
 import React from "react";
 import {BrowserRouter} from "react-router-dom";
 import './App.css';
-import Questions from "./Pages/Questions";
+import Discussions from "./Pages/Discussions";
 
 function App() {
     return (
@@ -10,7 +10,7 @@ function App() {
                 <main>
                     {/*사이드바*/}
                     <section className={'features'}>
-                            <Questions/>
+                        <Discussions/>
                     </section>
                 </main>
             </div>

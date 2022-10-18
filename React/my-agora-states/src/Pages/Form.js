@@ -1,13 +1,13 @@
 import React, {useState} from "react";
-import './Questions.css'
+import './Discussions.css'
 import agoraStatesDiscussions from "../static/data";
-import Question from "../Components/question";
+import Discussion from "../Components/Discussion";
 
-const Questions = () => {
+const Form = () => {
 
     const [name, setName] = useState('');
     const [title, setTitle] = useState('');
-    const [questions, setQuestions] = useState(agoraStatesDiscussions);
+    const [discussions, setDiscussions] = useState(agoraStatesDiscussions);
 
     const handleButtonClick = (event) => {
 
@@ -16,8 +16,8 @@ const Questions = () => {
         const img = document.querySelector('img')
         const url = img.src;
 
-        const question = {
-            id: questions.length + 1,
+        const discussion = {
+            id: discussions.length + 1,
             createdAt: new Date(),
             title: `${title}`,
             url: "https://github.com/codestates-seb/agora-states-fe/discussions/3",
@@ -28,8 +28,8 @@ const Questions = () => {
             avatarUrl: url,
         };
 
-        setQuestions([question, ...questions]);
-        console.log(questions);
+        setDiscussions([discussion, ...discussions]);
+        console.log(discussions);
     };
 
     const handleChangeuser = (event) => {
@@ -60,12 +60,12 @@ const Questions = () => {
                 <button className={'form__submitButton'} onClick={handleButtonClick}>제출</button>
             </div>
             <div className={'question__count'}>
-                {`total : ${questions.length}`}
+                {`total : ${discussions.length}`}
             </div>
             <div className={'question__list--wrapper'}>
                 <ul className={'questions'}>
-                    {questions.map((question) => {
-                        return <Question question={question} key={question.id}/>
+                    {discussions.map((discussion) => {
+                        return <Discussion discussion={discussion} key={discussion.id}/>
                     })}
                 </ul>
             </div>
