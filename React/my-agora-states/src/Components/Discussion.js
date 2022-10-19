@@ -1,29 +1,26 @@
 import React from 'react';
-import './Discussion.css';
+import '../static/css/Discussion.css';
 
-const Discussion = ({discussion}) => {
-    const parsedDate = new Date(discussion.createdAt).toLocaleDateString('ko-kr');
+export const Discussion = ({discussion}) => {
+    const {id, url, author, avatarUrl, title, createdAt, answer} = discussion;
+    const parsedDate = new Date(createdAt).toLocaleDateString('ko-kr');
 
     return (
-        <li className="question" id={discussion.id}>
-            <div className="question__profile">
-                <img src={discussion.avatarUrl} alt={'아바타'}/>
+        <li className="discussion__container">
+            <div className="discussion__avatar--wrapper">
+                <img className={'discussion__avatar--image'} src={avatarUrl} alt={`avatar of ${author}`}/>
             </div>
-            <div className="question__content">
-                <div className="question__userInfo">
-                    <div className="question__userInfo--wrapper">
-                        {/* TODO : 유져 이름이 있어야 합니다. */}
-                        <span className='question__author'>{discussion.author}</span>
-                        {/* TODO : 트윗 생성 일자가 있어야 합니다. parsedDate를 이용하세요. */}
-                        <span className={'question__createdAt'}>{parsedDate}</span>
-                    </div>
+            <div className="discussion__content">
+                <div className="discussion__title">
+                    <a href={url}>{title}</a>
                 </div>
-                <div className="question__message">
-                    {discussion.title}
+                <div className="discussion__userInfo">
+                    {`${author} / ${parsedDate}`}
                 </div>
+            </div>
+            <div className={'discussion__answered'}>
+                <p>{answer ? '✅' : '❎'}</p>
             </div>
         </li>
     );
 };
-
-export default Discussion;
