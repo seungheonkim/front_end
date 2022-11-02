@@ -2,11 +2,14 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/React/fe-sprint-cmarket-hooks" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/React/fe-sprint-cmarket-redux" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/React/fe-sprint-react-custom-component" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/React/fe-sprint-react-twittler-intro" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/React/fe-sprint-react-twittler-spa" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/React/fe-sprint-react-twittler-state-props" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/React/fe-sprint-statesairline-client" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/React/react-redux-practice" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/fe-dom-practice" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/fe-sprint-async-and-promise" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/fe-sprint-beesbeesbees" vcs="Git" />
