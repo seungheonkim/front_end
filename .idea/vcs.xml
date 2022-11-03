@@ -9,7 +9,6 @@
     <mapping directory="$PROJECT_DIR$/React/fe-sprint-react-twittler-spa" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/React/fe-sprint-react-twittler-state-props" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/React/fe-sprint-statesairline-client" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/React/react-redux-practice" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/fe-dom-practice" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/fe-sprint-async-and-promise" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/fe-sprint-beesbeesbees" vcs="Git" />
@@ -19,6 +18,7 @@
     <mapping directory="$PROJECT_DIR$/fe-sprint-tree-ui" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/fe-sprint-underbar" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/fe-sprint-validation-check" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/flux" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/server/fe-sprint-mini-node-server" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/server/fe-sprint-my-agora-states-server" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/server/fe-sprint-statesairline-server" vcs="Git" />
