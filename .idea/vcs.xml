@@ -18,6 +18,7 @@
     <mapping directory="$PROJECT_DIR$/fe-sprint-tree-ui" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/fe-sprint-underbar" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/fe-sprint-validation-check" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/fe-sprint-web-standards-web-accessibility" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/server/fe-sprint-mini-node-server" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/server/fe-sprint-my-agora-states-server" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/server/fe-sprint-statesairline-server" vcs="Git" />
