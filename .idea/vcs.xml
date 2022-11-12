@@ -13,6 +13,8 @@
     <mapping directory="$PROJECT_DIR$/fe-sprint-async-and-promise" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/fe-sprint-auth-cookie" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/fe-sprint-auth-session" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/fe-sprint-auth-token" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/fe-sprint-auth-token-reference" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/fe-sprint-beesbeesbees" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/fe-sprint-javascript-koans" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/fe-sprint-my-agora-states" vcs="Git" />
