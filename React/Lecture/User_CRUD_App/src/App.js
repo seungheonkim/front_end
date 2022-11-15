@@ -14,11 +14,12 @@ function App() {
                 age: userAge}];
         })
     }
+
     return (
-        <div>
+        <React.Fragment>
             <AddUser onAddUser={adduserHandler}/>
             <UsersList users={usersList}/>
-        </div>
+        </React.Fragment>
     );
 }
 
