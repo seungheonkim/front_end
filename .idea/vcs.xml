@@ -12,12 +12,14 @@
     <mapping directory="$PROJECT_DIR$/fe-dom-practice" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/fe-sprint-async-and-promise" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/fe-sprint-auth-cookie" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/fe-sprint-auth-oauth" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/fe-sprint-auth-session" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/fe-sprint-auth-token" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/fe-sprint-auth-token-reference" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/fe-sprint-beesbeesbees" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/fe-sprint-javascript-koans" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/fe-sprint-my-agora-states" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/fe-sprint-responsive-web" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/fe-sprint-stringify-json" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/fe-sprint-tree-ui" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/fe-sprint-underbar" vcs="Git" />
