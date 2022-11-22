@@ -8,5 +8,11 @@ h1 {
 }
 
 .section-title {
+    /*class 는 태그보다 상위 속성으로 적용된다*/
     color: #2ddf5c;
+}
+
+h1 {
+    /*동일한 태그일 경우 나중에 작성된 코드가 적용*/
+    font-family: sans-serif;
 }
