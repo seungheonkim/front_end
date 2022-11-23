@@ -19,6 +19,7 @@
     <mapping directory="$PROJECT_DIR$/fe-sprint-beesbeesbees" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/fe-sprint-javascript-koans" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/fe-sprint-my-agora-states" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/fe-sprint-my-agora-states-reference" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/fe-sprint-responsive-web" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/fe-sprint-stringify-json" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/fe-sprint-tree-ui" vcs="Git" />
