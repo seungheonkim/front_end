@@ -2,6 +2,9 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/React/custom-hooks/fe-sprint-react-hooks" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/React/custom-hooks/useEffect" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/React/custom-hooks/useInput" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/React/fe-sprint-cmarket-hooks" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/React/fe-sprint-cmarket-redux" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/React/fe-sprint-cmarket-redux-reference" vcs="Git" />
