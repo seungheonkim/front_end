@@ -1,9 +1,9 @@
-import React, { useMemo } from 'react';
+import React, {useMemo} from 'react';
 
 import classes from './DemoList.module.css';
 
 const DemoList = (props) => {
-    const { items } = props;
+    const {items} = props;
 
     const sortedList = useMemo(() => {
         console.log('Items sorted');

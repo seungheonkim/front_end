@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useMemo } from 'react';
+import React, {useCallback, useMemo, useState} from 'react';
 
 import './App.css';
 import DemoList from './components/Demo/DemoList';
@@ -15,7 +15,7 @@ function App() {
 
     return (
         <div className="app">
-            <DemoList title={listTitle} items={listItems} />
+            <DemoList title={listTitle} items={listItems}/>
             <Button onClick={changeTitleHandler}>Change List Title</Button>
         </div>
     );
