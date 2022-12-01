@@ -17,7 +17,7 @@ const App = () => {
             },
             owner: "codestates-seb",
             name: "agora-states-fe",
-            num: 5,
+            num: 10,
             query: `query repository($owner: String!, $name: String!, $num: Int!) {
         repository(name: $name, owner: $owner) {
           discussions(first: $num) {
