@@ -1,106 +1,64 @@
-import './App.css';
-import {graphql} from "@octokit/graphql";
 import {Fragment, useEffect, useState} from "react";
+import getRepository from "./getRepository";
+import Header from "./components/Header";
+import Category from "./components/Category";
+import Discussions from "./components/Discussions";
+import {Loading} from "./components/Loading";
 
 const App = () => {
-    const [data, setData] = useState();
-    const [user, setUser] = useState();
-    const [isLoading, setIsLoading] = useState(true);
-    const GHP_TOKEN = process.env.REACT_APP_GITHUB_TOKEN;
-
-    console.log(GHP_TOKEN);
-
-    async function repo() {
-        const {repository, viewer} = await graphql({
-            headers: {
-                authorization: `token ${GHP_TOKEN}`,
-            },
-            owner: "codestates-seb",
-            name: "agora-states-fe",
-            num: 10,
-            query: `query repository($owner: String!, $name: String!, $num: Int!) {
-        repository(name: $name, owner: $owner) {
-          discussions(first: $num) {
-            edges {
-              node {
-                category {
-                  name
-                }
-                author {
-                  login
-                  avatarUrl
-                }
-                createdAt
-                title
-                id
-                url
-                answer {
-                  author {
-                    login
-                    avatarUrl
-                  }
-                  bodyHTML
-                  createdAt
-                  id
-                }
-              }
-            }
-          }
-        },
-        viewer {
-          login
-          name
-          avatarUrl
-          email
-          location
-          createdAt
-          bio
-          websiteUrl
-        }
-      }`,
-        },);
-
-        return {repository, viewer};
-    }
+    const [discussionObj, setDiscussionObj] = useState({});
+    const {discussionCategories, discussions} = discussionObj;
+    const [viewer, setViewer] = useState({});
+    let [filterText, setFilterText] = useState('React');
+    let filterContent = '';
 
     useEffect(() => {
-        repo()
-            .then(res => {
-                setData(res.repository.discussions.edges);
-                setIsLoading(false);
-                setUser(res.viewer);
-                // console.log(res.viewer);
+        getRepository()
+            .then((data) => {
+                if (data) {
+                    setDiscussionObj(data.repository);
+                    setViewer(data.viewer);
+                    console.log(data.repository);
+                }
             })
-            .catch(err => {
+            .catch((err) => {
                 console.log(err);
             })
     }, []);
 
+    const handleCategoryClick = (e) => {
+        setFilterText(e.target.textContent);
+    };
+
+    if(discussions) {
+        filterContent = discussions.edges.filter((edge) => {
+            return edge.node.category.name === filterText
+        })
+    }
+
     return (
-        <div className={'App'}>
-            {user ? (
-                <Fragment>
-                    <p>Login!</p>
-                    <img src={user.avatarUrl} alt={''}/>
-                    <p>{user.login}</p>
-                    <p>{user.name}</p>
-                    <p>{user.location}</p>
-                    <p>{user.email}</p>
-                    <p>{user.createdAt}</p>
-                    <p>{user.bio}</p>
-                    <a href={user.websiteUrl}>My Notion</a>
-                </Fragment>
-            ) : <p>No user Info!</p>}
-            {isLoading ? <p>...Loading</p> : data.map((el, idx) => {
-                return (
-                    <li key={idx}>
-                        <img src={el.node.author.avatarUrl} alt={''}/>
-                        <a href={el.node.url}>{el.node.title}</a>
-                        <span>{el.node.author.login}</span>
-                    </li>
-                )
-            })}
-        </div>
+        <Fragment>
+            <main>
+                {discussions !== undefined ? (
+                    <Fragment>
+                        <Header viewer={viewer}/>
+                        <div className={'main-wrapper'}>
+                            <Category
+                                handleClick={handleCategoryClick}
+                                categories={discussionCategories}
+                            />
+                            <Discussions
+                                filterText={filterText}
+                                filterContent={filterContent}
+                                discussions={discussions}
+                            />
+                        </div>
+                    </Fragment>
+                ) : (
+                    <Loading/>
+                )}
+            </main>
+        </Fragment>
     )
 }
 
