@@ -8,7 +8,7 @@ const App = () => {
     const [isLoading, setIsLoading] = useState(true);
     const GHP_TOKEN = process.env.REACT_APP_GITHUB_TOKEN;
 
-    // console.log(GHP_TOKEN);
+    console.log(GHP_TOKEN);
 
     async function repo() {
         const {repository, viewer} = await graphql({
