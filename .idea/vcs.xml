@@ -30,6 +30,7 @@
     <mapping directory="$PROJECT_DIR$/fe-sprint-responsive-web" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/fe-sprint-stringify-json" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/fe-sprint-testbuilder" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/fe-sprint-testbuilder-reference" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/fe-sprint-tree-ui" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/fe-sprint-underbar" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/fe-sprint-validation-check" vcs="Git" />
