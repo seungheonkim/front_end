@@ -15,6 +15,7 @@
     <mapping directory="$PROJECT_DIR$/React/fe-sprint-react-twittler-spa" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/React/fe-sprint-react-twittler-state-props" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/React/fe-sprint-statesairline-client" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/React/react-proxy-example" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/fe-dom-practice" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/fe-sprint-async-and-promise" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/fe-sprint-auth-cookie" vcs="Git" />
@@ -27,6 +28,7 @@
     <mapping directory="$PROJECT_DIR$/fe-sprint-my-agora-states" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/fe-sprint-my-agora-states-reference" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/fe-sprint-my-agora-states-server-reference" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/fe-sprint-practice-deploy" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/fe-sprint-responsive-web" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/fe-sprint-stringify-json" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/fe-sprint-testbuilder" vcs="Git" />
