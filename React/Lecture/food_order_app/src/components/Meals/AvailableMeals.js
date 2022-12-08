@@ -24,7 +24,8 @@ const AvailableMeals = () => {
             setMeals(loadedMeals);
         }
 
-        fetchMeals();
+        fetchMeals()
+            .catch(err => console.log(err));
     }, []);
 
     const mealsList = meals.map((meal) => (
