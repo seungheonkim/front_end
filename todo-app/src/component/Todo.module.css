@@ -1,0 +1,8 @@
+.table {
+    text-align: center;
+}
+
+.complete {
+    text-decoration: line-through;
+    color: gray;
+}

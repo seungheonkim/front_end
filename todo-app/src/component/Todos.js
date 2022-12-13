@@ -5,9 +5,9 @@ const Todos = (props) => {
         <table>
             <thead>
             <tr>
+                <th></th>
                 <th>Date</th>
                 <th>Todo</th>
-                <th>Complete</th>
             </tr>
             </thead>
             <tbody>
@@ -19,6 +19,7 @@ const Todos = (props) => {
                     date={todo.date}
                     isComplete={todo.isComplete}
                     onDelete={props.deleteTodo}
+                    onEdit={props.editTodo}
                 />
             ))}
             </tbody>

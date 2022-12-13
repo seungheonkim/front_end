@@ -24,7 +24,9 @@ function App() {
                     isComplete: data[key].isComplete,
                 });
             }
-            setTodos(loadedTodos);
+
+            const sortedByDateTodo = loadedTodos.sort((a, b) => new Date(a.date) - new Date(b.date));
+            setTodos(sortedByDateTodo);
             setIsLoading(false);
         }
 
@@ -56,12 +58,20 @@ function App() {
         })
     }
 
+    const editTodoHandler = async (todoId, editData) => {
+        await fetch(`https://todo-app-b1dff-default-rtdb.firebaseio.com/todos/${todoId}.json`, {
+            method: 'PATCH',
+            body: JSON.stringify(editData),
+        })
+        console.log('patch done')
+    }
+
     return (
         <div className="App">
             {isLoading ? <Loading/> : (
                 <Fragment>
                     <TodoInput onSubmit={submitTodoHandler}/>
-                    <Todos todos={todos} deleteTodo={deleteTodoHandler}/>
+                    <Todos todos={todos} deleteTodo={deleteTodoHandler} editTodo={editTodoHandler}/>
                 </Fragment>
             )}
 
