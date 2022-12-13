@@ -50,12 +50,14 @@ function App() {
             method: 'POST',
             body: JSON.stringify(todoData),
         });
+        window.location.reload();
     };
 
     const deleteTodoHandler = async (todoId) => {
         await fetch(`https://todo-app-b1dff-default-rtdb.firebaseio.com/todos/${todoId}.json`, {
             method: "DELETE",
         })
+        window.location.reload();
     }
 
     const editTodoHandler = async (todoId, editData) => {
@@ -63,7 +65,6 @@ function App() {
             method: 'PATCH',
             body: JSON.stringify(editData),
         })
-        console.log('patch done')
     }
 
     return (
