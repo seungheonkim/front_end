@@ -14,9 +14,11 @@ const Todos = (props) => {
             {props.todos.map((todo) => (
                 <Todo
                     key={todo.id}
+                    id={todo.id}
                     todo={todo.todo}
                     date={todo.date}
                     isComplete={todo.isComplete}
+                    onDelete={props.deleteTodo}
                 />
             ))}
             </tbody>

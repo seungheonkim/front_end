@@ -1,11 +1,12 @@
 import './App.css';
-import React, {useEffect, useState} from "react";
+import React, {Fragment, useEffect, useState} from "react";
 import Todos from "./component/Todos";
 import TodoInput from "./component/TodoInput";
+import {Loading} from "./UI/Loading";
 
 function App() {
     const [todos, setTodos] = useState([]);
-    const [isLoading, setisLoading] = useState(true);
+    const [isLoading, setIsLoading] = useState(true);
     const [httpError, setHttpError] = useState();
 
     useEffect(() => {
@@ -24,23 +25,15 @@ function App() {
                 });
             }
             setTodos(loadedTodos);
-            setisLoading(false);
+            setIsLoading(false);
         }
 
         fetchTodos()
             .catch(err => {
-                setisLoading(false);
+                setIsLoading(false);
                 setHttpError(err.message);
             })
     }, []);
-
-    if (isLoading) {
-        return (
-            <section>
-                <p>...is Loading...</p>
-            </section>
-        )
-    }
 
     if (httpError) {
         return (
@@ -55,12 +48,23 @@ function App() {
             method: 'POST',
             body: JSON.stringify(todoData),
         });
+    };
+
+    const deleteTodoHandler = async (todoId) => {
+        await fetch(`https://todo-app-b1dff-default-rtdb.firebaseio.com/todos/${todoId}.json`, {
+            method: "DELETE",
+        })
     }
 
     return (
         <div className="App">
-            <TodoInput onSubmit={submitTodoHandler}/>
-            <Todos todos={todos}/>
+            {isLoading ? <Loading/> : (
+                <Fragment>
+                    <TodoInput onSubmit={submitTodoHandler}/>
+                    <Todos todos={todos} deleteTodo={deleteTodoHandler}/>
+                </Fragment>
+            )}
+
         </div>
     );
 }

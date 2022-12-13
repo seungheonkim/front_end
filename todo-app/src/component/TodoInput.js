@@ -1,11 +1,11 @@
-import {useRef, useState} from "react";
+import {useRef} from "react";
 
 const TodoInput = (props) => {
+    const today = new Date().toISOString().slice(0, 10);
     const todoInputRef = useRef();
     const dateInputRef = useRef();
-    const [isValid, setIsValid] = useState(true);
 
-    const isEmpty = value => value.trim().length === 0;
+    // const isEmpty = value => value.trim().length === 0;
 
     const formSubmitHandler = (event) => {
         event.preventDefault();
@@ -23,29 +23,29 @@ const TodoInput = (props) => {
         window.location.reload();
     }
 
-  return (
-      <form onSubmit={formSubmitHandler}>
-          <div>
-              <label htmlFor={'todo'}>Todo</label>
-              <input
-                type={'text'}
-                id={'todo'}
-                placeholder={'Please Enter Todo'}
-                ref={todoInputRef}
-              />
-          </div>
-          <div>
-              <label htmlFor={'date'}>date</label>
-              <input
-                type={'date'}
-                id={'date'}
-                value={`${new Date.now().toLocaleString()}`}
-                ref={dateInputRef}
-              />
-          </div>
-          <button type={'submit'}>Add Todo</button>
-      </form>
-  )
+    return (
+        <form onSubmit={formSubmitHandler}>
+            <div>
+                <label htmlFor={'todo'}>Todo</label>
+                <input
+                    type={'text'}
+                    id={'todo'}
+                    placeholder={'Please Enter Todo'}
+                    ref={todoInputRef}
+                />
+            </div>
+            <div>
+                <label htmlFor={'date'}>date</label>
+                <input
+                    type={'date'}
+                    id={'date'}
+                    defaultValue={`${today}`}
+                    ref={dateInputRef}
+                />
+            </div>
+            <button type={'submit'}>Add Todo</button>
+        </form>
+    )
 };
 
 export default TodoInput;
