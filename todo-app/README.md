@@ -20,4 +20,6 @@
 => 자동 새로고침을 통해 삭제가 되면서 리스트에서 제거됨
 
 ##시연 영상
-https://user-images.githubusercontent.com/95217370/207549342-e55e6464-1513-4c43-99f7-e2bb2198371c.mov
+
+https://user-images.githubusercontent.com/95217370/207559286-177dce03-5046-43fb-9bce-1b5c48ec2a48.mp4
+
