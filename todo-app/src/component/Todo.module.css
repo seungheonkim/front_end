@@ -1,8 +1,26 @@
-.table {
+
+.list {
+    display: flex;
+    margin: 2rem 1rem;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.complete div{
+    text-decoration-line: line-through ;
+    color: gray;
+}
+
+.dateBox {
+    width: 100px;
+    height: 20px;
     text-align: center;
 }
 
-.complete {
-    text-decoration: line-through;
-    color: gray;
+.todoBox {
+    width: 200px;
+    height: 20px;
+    text-align: center;
+    overflow: hidden;
 }
+

@@ -1,5 +1,4 @@
-import './App.css';
-import React, {Fragment, useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import Todos from "./component/Todos";
 import TodoInput from "./component/TodoInput";
 import {Loading} from "./UI/Loading";
@@ -70,10 +69,10 @@ function App() {
     return (
         <div className="App">
             {isLoading ? <Loading/> : (
-                <Fragment>
+                <main>
                     <TodoInput onSubmit={submitTodoHandler}/>
                     <Todos todos={todos} deleteTodo={deleteTodoHandler} editTodo={editTodoHandler}/>
-                </Fragment>
+                </main>
             )}
 
         </div>

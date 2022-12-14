@@ -1,7 +1,13 @@
 .form {
-    margin: 1rem 0;
-    height: 19rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    margin: 1rem 10%;
+    height: 15rem;
     overflow: auto;
+    text-align: center;
+    border-style: solid;
+    border-radius: 3rem;
 }
 
 .control {

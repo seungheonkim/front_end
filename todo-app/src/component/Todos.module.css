@@ -1,0 +1,43 @@
+.todo-wrapper {
+    border-style: solid;
+    border-color: black;
+    border-radius: 3rem;
+    margin: 1rem 10%;
+}
+
+.todo-container {
+    border-style: solid;
+    border-color: black;
+    border-radius: 3rem;
+    margin: 1rem 10%;
+    padding: 10px 10px;
+    scroll-behavior: auto;
+    max-height: 650px;
+    overflow: auto;
+
+}
+
+.content-title{
+    margin: 1rem 15%;
+    height: 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.todo-title {
+    width: 200px;
+    text-align: center;
+}
+
+.date-title {
+    width: 100px;
+    text-align: center;
+}
+
+ul {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+}

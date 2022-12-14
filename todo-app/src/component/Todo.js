@@ -18,21 +18,19 @@ const Todo = (props) => {
         props.onEdit(props.id, edited);
     }
 
-    const showCompletedClasses = `${classes.table} ${checked ? classes.complete : ''}`
+    const showCompletedClasses = `${classes.list} ${checked ? classes.complete : ''}`
 
     return (
-        <tr className={showCompletedClasses}>
-            <td><Checkbox
+        <li className={showCompletedClasses}>
+            <Checkbox
                 checked={checked}
                 onClick={isCompleteHandler}
                 inputProps={{'aria-label': 'controlled'}}
-            /></td>
-            <td>{props.date}</td>
-            <td>{props.todo}</td>
-            <td>
-                <button onClick={deleteButton}>Delete</button>
-            </td>
-        </tr>
+            />
+            <div className={classes.dateBox}>{props.date}</div>
+            <div className={classes.todoBox}>{props.todo}</div>
+            <button onClick={deleteButton} disabled={!checked}>Delete</button>
+        </li>
     )
 }
 

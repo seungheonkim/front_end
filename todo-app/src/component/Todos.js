@@ -1,29 +1,30 @@
 import Todo from "./Todo";
+import classes from './Todos.module.css';
+import React from "react";
 
 const Todos = (props) => {
     return (
-        <table>
-            <thead>
-            <tr>
-                <th></th>
-                <th>Date</th>
-                <th>Todo</th>
-            </tr>
-            </thead>
-            <tbody>
-            {props.todos.map((todo) => (
-                <Todo
-                    key={todo.id}
-                    id={todo.id}
-                    todo={todo.todo}
-                    date={todo.date}
-                    isComplete={todo.isComplete}
-                    onDelete={props.deleteTodo}
-                    onEdit={props.editTodo}
-                />
-            ))}
-            </tbody>
-        </table>
+        <section className={classes['todo-wrapper']}>
+            <div className={classes['content-title']}>
+                <div>완료</div>
+                <div className={classes['date-title']}>등록일</div>
+                <div className={classes['todo-title']}>할일</div>
+                <div>삭제</div>
+            </div>
+            <ul className={classes['todo-container']}>
+                {props.todos.map((todo) => (
+                    <Todo
+                        key={todo.id}
+                        id={todo.id}
+                        todo={todo.todo}
+                        date={todo.date}
+                        isComplete={todo.isComplete}
+                        onDelete={props.deleteTodo}
+                        onEdit={props.editTodo}
+                    />
+                ))}
+            </ul>
+        </section>
     )
 };
 
