@@ -1,5 +1,13 @@
-import {useRef, useState} from "react";
+import {forwardRef, useRef, useState} from "react";
 import classes from './TodoInput.module.css';
+import Stack from '@mui/material/Stack';
+import Button from '@mui/material/Button';
+import Snackbar from '@mui/material/Snackbar';
+import MuiAlert from '@mui/material/Alert';
+
+const Alert = forwardRef(function Alert(props, ref) {
+    return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+});
 
 const isEmpty = value => value.trim().length === 0;
 
@@ -8,6 +16,20 @@ const TodoInput = (props) => {
     const today = new Date().toISOString().slice(0, 10);
     const todoInputRef = useRef();
     const dateInputRef = useRef();
+
+    const [open, setOpen] = useState(false);
+
+    const handleClick = () => {
+        setOpen(true);
+    };
+
+    const handleClose = (event, reason) => {
+        if (reason === 'clickaway') {
+            return;
+        }
+
+        setOpen(false);
+    };
 
     const formSubmitHandler = (event) => {
         event.preventDefault();
@@ -42,7 +64,6 @@ const TodoInput = (props) => {
                     placeholder={'Todo'}
                     ref={todoInputRef}
                 />
-                {!todoInputValidity && <p>Please enter your Todo!!</p>}
             </div>
             <div className={classes.control}>
                 <label htmlFor={'date'}>date</label>
@@ -53,9 +74,22 @@ const TodoInput = (props) => {
                     ref={dateInputRef}
                 />
             </div>
-            <div className={classes.actions}>
-                <button className={classes.submit} type={'submit'}>Add Todo</button>
-            </div>
+            <Stack className={classes.actions} spacing={2} direction={'row'}>
+                <Button className={classes.submit} type={'submit'} variant="contained" onClick={handleClick}>
+                    Add Todo
+                </Button>
+                <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+                    {todoInputValidity ? (
+                        <Alert onClose={handleClose} severity="success" sx={{width: '100%'}}>
+                            Add Complete!!
+                        </Alert>
+                    ) : (
+                        <Alert onClose={handleClose} severity="error" sx={{width: '100%'}}>
+                            Enter your Todo!!
+                        </Alert>
+                    )}
+                </Snackbar>
+            </Stack>
         </form>
     )
 };

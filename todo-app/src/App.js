@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react";
 import Todos from "./component/Todos";
 import TodoInput from "./component/TodoInput";
 import {Loading} from "./UI/Loading";
+import Header from "./Layout/Header";
 
 function App() {
     const [todos, setTodos] = useState([]);
@@ -68,6 +69,7 @@ function App() {
 
     return (
         <div className="App">
+            <Header/>
             {isLoading ? <Loading/> : (
                 <main>
                     <TodoInput onSubmit={submitTodoHandler}/>
