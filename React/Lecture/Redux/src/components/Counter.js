@@ -1,15 +1,14 @@
 import {useDispatch, useSelector} from "react-redux";
 import classes from './Counter.module.css';
-import {DECREMENT, INCREASE, INCREMENT, TOGGLE} from "../store";
-import {counterActions} from "../store";
+import {counterActions} from "../store/counter";
 
 const Counter = () => {
     //action 가져오기
     const dispatch = useDispatch();
     //store 에서 가져올 state 가져오기
     //subscribing 까지 한번에 해준다
-    const counter = useSelector(state => state.counter);
-    const showCounter = useSelector(state => state.showCounter);
+    const counter = useSelector(state => state.counter.counter);
+    const showCounter = useSelector(state => state.counter.showCounter);
 
     const incrementHandler = () => {
         // dispatch({
