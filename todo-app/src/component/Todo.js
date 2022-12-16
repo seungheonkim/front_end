@@ -11,12 +11,12 @@ const Todo = (props) => {
         props.onDelete(props.id);
     }
 
-    const isCompleteHandler = (event) => {
+    const isCompleteHandler = () => {
         setChecked(!checked);
-        let edited = {
+        let updated = {
             isComplete: !checked,
         };
-        props.onEdit(props.id, edited);
+        props.onEdit(updated, props.id);
     }
 
     const showCompletedClasses = `${classes.list} ${checked ? classes.complete : ''}`

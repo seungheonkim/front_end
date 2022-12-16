@@ -1,8 +1,11 @@
 import Todo from "./Todo";
 import classes from './Todos.module.css';
 import React from "react";
+import {useSelector} from "react-redux";
 
 const Todos = (props) => {
+    const todos = useSelector(state => state.todo.todos);
+
     return (
         <section className={classes['todo-wrapper']}>
             <div className={classes['content-title']}>
@@ -12,7 +15,7 @@ const Todos = (props) => {
                 <div>삭제</div>
             </div>
             <ul className={classes['todo-container']}>
-                {props.todos.map((todo) => (
+                {todos.map((todo) => (
                     <Todo
                         key={todo.id}
                         id={todo.id}

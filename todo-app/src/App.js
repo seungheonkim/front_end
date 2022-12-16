@@ -1,83 +1,54 @@
-import React, {useEffect, useState} from "react";
+import React, {Fragment, useEffect, useState} from "react";
 import Todos from "./component/Todos";
 import TodoInput from "./component/TodoInput";
+import Notification from "./UI/Notification";
 import {Loading} from "./UI/Loading";
 import Header from "./Layout/Header";
+import {useDispatch, useSelector} from "react-redux";
+import {deleteTodoData, fetchTodoData, sendTodoData, updateTodoData} from "./store/todo-actions";
 
 function App() {
-    const [todos, setTodos] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
-    const [httpError, setHttpError] = useState();
+
+    const dispatch = useDispatch();
+    const notification = useSelector(state => state.ui.notification);
 
     useEffect(() => {
-        const fetchTodos = async () => {
-            const response = await fetch('https://todo-app-b1dff-default-rtdb.firebaseio.com/todos.json');
-            const data = await response.json();
+        dispatch(fetchTodoData());
+        setIsLoading(false);
+    }, [dispatch]);
 
-            const loadedTodos = [];
-
-            for (const key in data) {
-                loadedTodos.push({
-                    id: key,
-                    todo: data[key].todo,
-                    date: data[key].date,
-                    isComplete: data[key].isComplete,
-                });
-            }
-
-            const sortedByDateTodo = loadedTodos.sort((a, b) => new Date(a.date) - new Date(b.date));
-            setTodos(sortedByDateTodo);
-            setIsLoading(false);
-        }
-
-        fetchTodos()
-            .catch(err => {
-                setIsLoading(false);
-                setHttpError(err.message);
-            })
-    }, []);
-
-    if (httpError) {
-        return (
-            <section>
-                <p>{httpError}</p>
-            </section>
-        )
-    }
-
-    const submitTodoHandler = async (todoData) => {
-        await fetch('https://todo-app-b1dff-default-rtdb.firebaseio.com/todos.json', {
-            method: 'POST',
-            body: JSON.stringify(todoData),
-        });
-        window.location.reload();
+    const submitTodoHandler = (todoData) => {
+        dispatch(sendTodoData(todoData));
+        setTimeout(() => window.location.reload(), 1000);
+        setIsLoading(false);
     };
 
-    const deleteTodoHandler = async (todoId) => {
-        await fetch(`https://todo-app-b1dff-default-rtdb.firebaseio.com/todos/${todoId}.json`, {
-            method: "DELETE",
-        })
-        window.location.reload();
+    const deleteTodoHandler = (todoId) => {
+        dispatch(deleteTodoData(todoId));
+        setTimeout(() => window.location.reload(), 1000);
+        setIsLoading(false);
     }
 
-    const editTodoHandler = async (todoId, editData) => {
-        await fetch(`https://todo-app-b1dff-default-rtdb.firebaseio.com/todos/${todoId}.json`, {
-            method: 'PATCH',
-            body: JSON.stringify(editData),
-        })
+    const editTodoHandler = (updatedData, todoId) => {
+        dispatch(updateTodoData(updatedData, todoId));
     }
 
     return (
-        <div className="App">
+        <Fragment>
+            {notification && <Notification
+                status={notification.status}
+                title={notification.title}
+                message={notification.message}
+            />}
             <Header/>
             {isLoading ? <Loading/> : (
                 <main>
                     <TodoInput onSubmit={submitTodoHandler}/>
-                    <Todos todos={todos} deleteTodo={deleteTodoHandler} editTodo={editTodoHandler}/>
+                    <Todos deleteTodo={deleteTodoHandler} editTodo={editTodoHandler}/>
                 </main>
             )}
-
-        </div>
+        </Fragment>
     );
 }
 
