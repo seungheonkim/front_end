@@ -11,9 +11,9 @@ function App() {
             <main>
                 <Routes>
                     {/*/ 로 가면 알아서 /welcome 으로 자동 연결*/}
-                    <Route path={'/'} element={<Navigate replace to={'/welcome'}/>}/>
+                    <Route path={'/'} element={<Navigate to={'/welcome'}/>}/>
                     {/*nesting-route 구현*/}
-                    <Route path={'/welcome'} element={<Welcome/>}>
+                    <Route path={'/welcome/*'} element={<Welcome/>}>
                         <Route path={'new-user'} element={<p>Welcome, new-user!!</p>}/>
                     </Route>
                     <Route path={'/products'} element={<Products/>}/>

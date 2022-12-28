@@ -8,10 +8,13 @@ const MainHeader = () => {
                 <ul>
                     <li>
                         {/*Link 를 통한 새로고침 방지하기 , 리액트에 저장되어 있는 state 도 그대로 유지*/}
-                        <NavLink activeclassname={classes.active} to={'/welcome'}>Welcome</NavLink>
+                        <NavLink className={(navData) => navData.isActive ? classes.active : ''}
+                                 to={'/welcome'}>Welcome</NavLink>
                     </li>
                     <li>
-                        <NavLink activeclassname={classes.active} to={'/products'}>Products</NavLink>
+                        <NavLink
+                            className={(navData) => navData.isActive ? classes.active : ''}
+                            to={'/products'}>Products</NavLink>
                     </li>
                 </ul>
             </nav>
